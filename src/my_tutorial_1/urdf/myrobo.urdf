@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="mark3">
+
+  <!-- Base footprint: ground projection of robot center -->
+  <link name="base_footprint" />
+
+  <joint name="base_footprint_to_base_link" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+
+  <!-- Base link -->
+  <link name="base_link" />
+
+  <!-- Joint connecting base_link to chassis -->
+  <joint name="base_to_chassis" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Chassis_Fixed"/>
+  </joint>
+
+  <!-- Chassis -->
+  <link name="Chassis_Fixed">
+    <inertial>
+      <origin xyz="-3.48301383216647E-05 -0.00597816527961164 0.00219929418505431" rpy="0 0 0" />
+      <mass value="0.676138467755629" />
+      <inertia ixx="0.000647368783891609" ixy="-2.38321109295752E-08" ixz="5.07664706825948E-08"
+               iyy="0.00123934778831998" iyz="7.92920932558435E-06" izz="0.000723284619550402" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_tutorial_1/meshes/Chassis_Fixed.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.192156862745098 0.203921568627451 0.203921568627451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://my_tutorial_1/meshes/Chassis_Fixed.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Right Front Wheel -->
+  <link name="Right_Front">
+    <inertial>
+      <origin xyz="0.030871 -5.2966E-07 -6.4935E-07" rpy="0 0 0" />
+      <mass value="0.18351" />
+      <inertia ixx="9.0093E-05" ixy="3.8837E-10" ixz="4.6075E-10"
+               iyy="5.7394E-05" iyz="3.1329E-09" izz="5.7395E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://my_tutorial_1/meshes/Right_Front.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://my_tutorial_1/meshes/Right_Front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Wheel_1" type="continuous">
+    <origin xyz="-0.083 -0.07999 -0.030593" rpy="1.5954 0 3.1416" />
+    <parent link="Chassis_Fixed" />
+    <child link="Right_Front" />
+    <axis xyz="-1 0 0" />
+  </joint>
+
+  <!-- Right Back Wheel -->
+  <link name="Right_Back">
+    <inertial>
+      <origin xyz="0.031039 0.00014756 -0.00086934" rpy="0 0 0" />
+      <mass value="0.22653" />
+      <inertia ixx="9.379E-05" ixy="-2.1974E-07" ixz="-3.7035E-08"
+               iyy="6.2203E-05" iyz="3.7081E-08" izz="6.1994E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://my_tutorial_1/meshes/Right_Back.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://my_tutorial_1/meshes/Right_Back.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Wheel_2" type="continuous">
+    <origin xyz="-0.083 0.078467 -0.03183" rpy="0.17453 0 -3.1416" />
+    <parent link="Chassis_Fixed" />
+    <child link="Right_Back" />
+    <axis xyz="-1 0 0" />
+  </joint>
+
+  <!-- Left Back Wheel -->
+  <link name="Left_Back">
+    <inertial>
+      <origin xyz="0.030872 -5.2898E-07 -6.4966E-07" rpy="0 0 0" />
+      <mass value="0.18351" />
+      <inertia ixx="9.0095E-05" ixy="3.8783E-10" ixz="4.6089E-10"
+               iyy="5.7395E-05" iyz="4.3277E-09" izz="5.7396E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://my_tutorial_1/meshes/Left_Back.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://my_tutorial_1/meshes/Left_Back.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Wheel_3" type="continuous">
+    <origin xyz="0.083 0.078467 -0.03183" rpy="2.9916 0 0" />
+    <parent link="Chassis_Fixed" />
+    <child link="Left_Back" />
+    <axis xyz="1 0 0" />
+  </joint>
+
+  <!-- Left Front Wheel -->
+  <link name="Left_Front">
+    <inertial>
+      <origin xyz="0.031039 0.00014756 -0.00086934" rpy="0 0 0" />
+      <mass value="0.22653" />
+      <inertia ixx="9.379E-05" ixy="-2.1974E-07" ixz="-3.7035E-08"
+               iyy="6.2203E-05" iyz="3.7081E-08" izz="6.1994E-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://my_tutorial_1/meshes/Left_Front.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://my_tutorial_1/meshes/Left_Front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Wheel_4" type="continuous">
+    <origin xyz="0.083 -0.07999 -0.030593" rpy="1.2993 0 0" />
+    <parent link="Chassis_Fixed" />
+    <child link="Left_Front" />
+    <axis xyz="1 0 0" />
+  </joint>
+
+</robot>
+
