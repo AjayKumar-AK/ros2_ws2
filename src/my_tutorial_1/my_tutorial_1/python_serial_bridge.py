@@ -13,7 +13,7 @@ import math
 
 class OdomBridge(Node):
     def __init__(self,
-                 port='/dev/ttyUSB1',
+                 port='/dev/ttyUSB0',
                  baud=115200,
                  ticks_per_rev=490.0,
                  wheel_radius=0.047,

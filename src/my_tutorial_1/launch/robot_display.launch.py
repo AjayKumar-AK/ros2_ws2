@@ -60,11 +60,7 @@ def generate_launch_description():
                 'use_sim_time': False
             }]
         ),
-        
-        
-        
-        
-        
+       
         Node(
             package='robot_localization',
             executable='ekf_node',

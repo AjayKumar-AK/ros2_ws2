@@ -71,22 +71,7 @@ def generate_launch_description():
             output='screen'
         ),
         
-        # SLLidar Node
-        Node(
-            package='sllidar_ros2',
-            executable='sllidar_node',
-            name='sllidar_node',
-            output='screen',
-            parameters=[{
-                'serial_port': '/dev/ttyUSB0',  # Adjust if your lidar uses different port
-                'serial_baudrate': 115200,      # Standard baudrate for C1
-                'frame_id': 'laser',
-                'inverted': False,
-                'angle_compensate': True,
-                'scan_mode': 'Standard',
-                'use_sim_time': LaunchConfiguration('use_sim_time')
-            }]
-        ),
+        
         
         # SLAM Toolbox - Online Async
         Node(
@@ -99,26 +84,15 @@ def generate_launch_description():
             }]
         ),
         
-        # RViz2 Node with master.rviz config
-        Node(
-            package='rviz2',
-            executable='rviz2',
-            name='rviz2',
-            output='screen',
-            arguments=['-d', rviz_config_file],
-            parameters=[{
-                'use_sim_time': LaunchConfiguration('use_sim_time')
-            }]
-        ),
+       
         
-        # EKF Node (commented out for now - uncomment when needed)
-        # Node(
-        #     package='robot_localization',
-        #     executable='ekf_node',
-        #     name='ekf_filter_node',
-        #     output='screen',
-        #     parameters=[ekf_config, {
-        #         'use_sim_time': LaunchConfiguration('use_sim_time')
-        #     }]
-        # )
+         
+        Node(
+            package='robot_localization',
+            executable='ekf_node',
+            name='ekf_filter_node',
+            output='screen',
+            parameters=['/home/ajay/ros2_ws/src/my_tutorial_1/config/ekf.yaml']
+            
+        )
     ])
