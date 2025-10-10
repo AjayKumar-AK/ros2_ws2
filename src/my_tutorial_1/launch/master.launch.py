@@ -73,16 +73,7 @@ def generate_launch_description():
         
         
         
-        # SLAM Toolbox - Online Async
-        Node(
-            package='slam_toolbox',
-            executable='async_slam_toolbox_node',
-            name='slam_toolbox_node',
-            output='screen',
-            parameters=[slam_params_file, {
-                'use_sim_time': LaunchConfiguration('use_sim_time')
-            }]
-        ),
+    
         
        
         
