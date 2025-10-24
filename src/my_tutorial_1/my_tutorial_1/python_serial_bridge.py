@@ -71,7 +71,7 @@ class OdomBridge(Node):
         try:
             self.ser.write(command.encode('utf-8'))
             # Uncomment for debug
-            # self.get_logger().info(f"Sent cmd_vel: vx={vx:.3f}, vy={vy:.3f}, omega={omega:.3f}")
+            self.get_logger().info(f"Sent cmd_vel: vx={vx:.3f}, vy={vy:.3f}, omega={omega:.3f}")
         except Exception as e:
             self.get_logger().error(f"Serial write error: {e}")
 
